@@ -12,38 +12,22 @@ let badgeLinks = [
         link: `[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)`
     },
     {
-        name: 'Eclipse',
-        link: `[![License](https://img.shields.io/badge/License-EPL_1.0-red.svg)](https://opensource.org/licenses/EPL-1.0)`
-    },
-    {
-        name: 'IBM',
-        link: `[![License: IPL 1.0](https://img.shields.io/badge/License-IPL_1.0-blue.svg)](https://opensource.org/licenses/IPL-1.0)`
-    },
-    {
-        name: 'ISC',
-        link: `[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)`
+        name: 'Unilicense',
+        link: `[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)`
     },
     {
         name: 'MIT',
         link: `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
     },
-    {
-        name: 'Mozilla',
-        link: `[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)`
-    },
-    {
-        name: 'Perl',
-        link: `[![License: Artistic-2.0](https://img.shields.io/badge/License-Perl-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)`
-    }
 ]
 
-let {title, description, tableOfContents, installation, credit, usage, license } = await inquirer
+let { title, description, tableOfContents, installation, credit, usage, license } = await inquirer
     .prompt([
         {
             type: 'input',
             name: 'title',
             message: 'What is the title of your project?',
-            
+
         },
         // {
         //     type: 'input',
@@ -65,15 +49,16 @@ let {title, description, tableOfContents, installation, credit, usage, license }
         //     name: 'credit',
         //     message: 'List your collaborators with their Github profiles, list any third-party assets that require attribution, and include tutorial links.',
         // },
-        // {
-        //     type: 'list',
-        //     name: 'license',
-        //     message: 'What license are you using?',
-        //     choices: ['Apache', 'Eclipse', 'Boost', 'IBM', 'ISC', 'MIT', 'Mozilla', 'Perl'],
-        //     filter(val) {
-        //         return val;
-        //     }
-        // },
+        {
+            type: 'list',
+            name: 'license',
+            message: 'What license are you using?',
+            choices: ['MIT', 'Apache', 'Boost', 'Unilicense'],
+            filter(val) {
+                console.log(val)
+                return val;
+            }
+        },
         // {
         //     type: 'confirm',
         //     name: 'tableOfContents',
@@ -86,9 +71,11 @@ let {title, description, tableOfContents, installation, credit, usage, license }
 
 let readmeText =
 
-`# ${titleSplitter(title)}   ${returnBadge()}
+    `# ${titleSplitter(title)}   ${returnBadge()}
 
-## ${description}
+## Description
+
+${description}
 
 ${generateTableOfContents()}
 
@@ -105,26 +92,26 @@ ${creditsGenerator()}
 ${generateLicense(license)}`
 
 
+console.log(readmeText)
 
 
-
-function titleSplitter(title){
+function titleSplitter(title) {
     let titleName = title
     let titleSplit = titleName.split(' ')
-    console.log(titleSplit)
     for (let i = 0; i < titleSplit.length; i++) {
-        titleSplit[i]= titleSplit[i][0].toUpperCase() + titleSplit[i].substr(1);
-       
-        
+        titleSplit[i] = titleSplit[i][0].toUpperCase() + titleSplit[i].substr(1);
+
+
     }
-     let titleJoin = titleSplit.join('-')
+    let titleJoin = titleSplit.join('-')
+    return titleJoin
 }
 
 
 function generateTableOfContents() {
 
     let tableText =
-`## Table of Contents
+        `## Table of Contents
 
     -[Installation](#installation)
     -[Usage](#usage)
@@ -141,48 +128,130 @@ function generateTableOfContents() {
 }
 
 function createInstallationSteps() {
-    if (installation == 'y') {
+    let installationText =
+        `## Installation
+
+    ${installation}`
+
+    if (installation == true) {
+        return installationText
 
     }
-    else {
+    else if (installation === false) {
         return
     }
 }
 
 function creditsGenerator() {
     if (credit === true) {
-
+        return credit
+    }
+    else {
+        return
     }
 }
 
 
-function generateLicense() {
-    if (license === "Apache") {
-        return 
-        `Copyright [${}] [name of copyright owner]
+function generateLicense(license) {
+    if (license == "Apache") {
+        return `Copyright [yyyy] [name of copyright owner]
 
-        Licensed under the Apache License, Version 2.0 (the "License");
-        you may not use this file except in compliance with the License.
-        You may obtain a copy of the License at
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.`
+    }
+    else if (license == 'MIT') {
+        return`MIT License
+
+Copyright (c) [year] [fullname]
         
-            http://www.apache.org/licenses/LICENSE-2.0
-        
-        Unless required by applicable law or agreed to in writing, software
-        distributed under the License is distributed on an "AS IS" BASIS,
-        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-        See the License for the specific language governing permissions and
-        limitations under the License.`
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.`
+    }
+    else if (license == 'Boost') {
+        return `Boost Software License - Version 1.0 - August 17th, 2003
+
+Permission is hereby granted, free of charge, to any person or organization
+obtaining a copy of the software and accompanying documentation covered by
+this license (the "Software") to use, reproduce, display, distribute,
+execute, and transmit the Software, and to prepare derivative works of the
+Software, and to permit third-parties to whom the Software is furnished to
+do so, all subject to the following:
+
+The copyright notices in the Software and this entire statement, including
+the above license grant, this restriction and the following disclaimer,
+must be included in all copies of the Software, in whole or in part, and
+all derivative works of the Software, unless such copies or derivative
+works are solely in the form of machine-executable object code generated by
+a source language processor.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT
+SHALL THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE SOFTWARE BE LIABLE
+FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.`
+    }
+    else if (license == 'Unilicense') {
+        return `This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to <https://unlicense.org>`
     }
 }
 
 
 function returnBadge() {
     for (let i = 0; i < badgeLinks.length; i++) {
-            if (license === badgeLinks[i].name) {
-                return badgeLinks[i].link
-                console.log(badgeLinks[i].link)
-            }
-        
+        if (license === badgeLinks[i].name) {
+            return badgeLinks[i].link
+            console.log(badgeLinks[i].link)
+        }
+
     }
 }
 
