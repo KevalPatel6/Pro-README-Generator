@@ -64,27 +64,28 @@ let { title, description, tableOfContents, installation, credit, usage, license 
         //     name: 'credit',
         //     message: 'List your collaborators with their Github profiles, list any third-party assets that require attribution, and include tutorial links.',
         // },
-        {
-            type: 'list',
-            name: 'license',
-            message: 'What license are you using?',
-            choices: ['Apache', 'Eclipse', 'Boost', 'IBM', 'ISC', 'MIT', 'Mozilla', 'Perl'],
-            filter(val) {
-                return val;
-            }
-        },
         // {
-        //     type: 'confirm',
-        //     name: 'tableOfContents',
-        //     message: "Do you want a table of contents?"
+        //     type: 'list',
+        //     name: 'license',
+        //     message: 'What license are you using?',
+        //     choices: ['Apache', 'Eclipse', 'Boost', 'IBM', 'ISC', 'MIT', 'Mozilla', 'Perl'],
+        //     filter(val) {
+        //         return val;
+        //     }
         // },
+        {
+            type: 'confirm',
+            name: 'tableOfContents',
+            message: "Do you want a table of contents?"
+        },
 
 
     ])
 console.log(license)
 
 let readmeText =
-    `# ${title}   ${returnBadge()}
+
+`# ${titleSplitter()}   ${returnBadge()}
 
 ## ${description}
 
@@ -102,6 +103,19 @@ ${creditsGenerator()}
 
 ${generateLicense(license)}`
 
+
+
+
+function titleSplitter(title){
+    let titleSplit = title.split(' ')
+    for (let i = 0; i < titleSplit.length; i++) {
+        let titleCapitalize = titleSplit[i];
+        titleCapitalize[0].toUpperCase();
+    }
+    let titleJoin = titleSplit.join('-')
+    return titleJoin
+    console.log(titleJoin)
+}
 
 
 function generateTableOfContents() {
