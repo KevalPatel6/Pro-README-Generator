@@ -37,12 +37,13 @@ let badgeLinks = [
     }
 ]
 
-let { title, description, tableOfContents, installation, credit, usage, license } = await inquirer
+let {title, description, tableOfContents, installation, credit, usage, license } = await inquirer
     .prompt([
         {
             type: 'input',
             name: 'title',
-            message: 'What is the title of your project?'
+            message: 'What is the title of your project?',
+            
         },
         // {
         //     type: 'input',
@@ -73,19 +74,19 @@ let { title, description, tableOfContents, installation, credit, usage, license 
         //         return val;
         //     }
         // },
-        {
-            type: 'confirm',
-            name: 'tableOfContents',
-            message: "Do you want a table of contents?"
-        },
+        // {
+        //     type: 'confirm',
+        //     name: 'tableOfContents',
+        //     message: "Do you want a table of contents?"
+        // },
 
 
     ])
-console.log(license)
+
 
 let readmeText =
 
-`# ${titleSplitter()}   ${returnBadge()}
+`# ${titleSplitter(title)}   ${returnBadge()}
 
 ## ${description}
 
@@ -106,15 +107,17 @@ ${generateLicense(license)}`
 
 
 
+
 function titleSplitter(title){
-    let titleSplit = title.split(' ')
+    let titleName = title
+    let titleSplit = titleName.split(' ')
+    console.log(titleSplit)
     for (let i = 0; i < titleSplit.length; i++) {
-        let titleCapitalize = titleSplit[i];
-        titleCapitalize[0].toUpperCase();
+        titleSplit[i]= titleSplit[i][0].toUpperCase() + titleSplit[i].substr(1);
+       
+        
     }
-    let titleJoin = titleSplit.join('-')
-    return titleJoin
-    console.log(titleJoin)
+     let titleJoin = titleSplit.join('-')
 }
 
 
@@ -156,6 +159,19 @@ function creditsGenerator() {
 function generateLicense() {
     if (license === "Apache") {
         return 
+        `Copyright [${}] [name of copyright owner]
+
+        Licensed under the Apache License, Version 2.0 (the "License");
+        you may not use this file except in compliance with the License.
+        You may obtain a copy of the License at
+        
+            http://www.apache.org/licenses/LICENSE-2.0
+        
+        Unless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions and
+        limitations under the License.`
     }
 }
 
@@ -170,7 +186,7 @@ function returnBadge() {
     }
 }
 
-fs.writeFile("README.md", readmeText)
+// fs.writeFile("README.md", readmeText)
 
 
 
