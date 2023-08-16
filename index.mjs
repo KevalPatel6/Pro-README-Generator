@@ -39,11 +39,11 @@ let badgeLinks = [
 
 let { title, description, tableOfContents, installation, credit, usage, license } = await inquirer
     .prompt([
-        // {
-        //     type: 'input',
-        //     name: 'title',
-        //     message: 'What is the title of your project?'
-        // },
+        {
+            type: 'input',
+            name: 'title',
+            message: 'What is the title of your project?'
+        },
         // {
         //     type: 'input',
         //     name: 'description',
