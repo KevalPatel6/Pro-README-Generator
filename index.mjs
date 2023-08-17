@@ -108,9 +108,9 @@ let { title, description, tableOfContents, want_installation, installation, want
 
 let readmeText =
 
-    `#${titleSplitter(title)}   ${returnBadge()}
+    `# ${titleSplitter(title)}   ${returnBadge()}
 
-##Description
+## Description
 
 ${description}${generateTableOfContents()}${createInstallationSteps()}
 
@@ -118,11 +118,11 @@ ${description}${generateTableOfContents()}${createInstallationSteps()}
 
 ${usage}
 ${creditsGenerator()}
-##License
+## License
 
 ${generateLicense(license)}
 ${generateTests()}
-##Questions
+## Questions
 
 If you would like to reach out to me with any questions, you can email me directly at: [${email}](mailto:${email})
 
@@ -149,7 +149,7 @@ function titleSplitter(title) {
 function generateTableOfContents() {
 
     let tableText =`
-##Table of Contents
+## Table of Contents
 
     [Installation](#installation)
     [Usage](#usage)
@@ -171,7 +171,7 @@ function createInstallationSteps() {
     let installationText =
 `
 
-##Installation
+## Installation
 
 ${installation}`
 
@@ -187,7 +187,7 @@ ${installation}`
 function creditsGenerator() {
     if (want_credit === true) {
         return `
-##Credits 
+## Credits 
 
 ${credit}
 `
@@ -200,7 +200,7 @@ ${credit}
 function generateTests(){
     if(want_tests===true){
         return `
-##Tests
+## Tests
 
 ${tests}
 `
