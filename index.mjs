@@ -152,11 +152,11 @@ function generateTableOfContents() {
     let tableText =
         `## Table of Contents
 
-    -[Installation](##installation)
-    -[Usage](##usage)
-    -[Credits](##credits)
-    -[License](##license)
-    -[Questions](##questions)`
+    -[Installation](#installation)
+    -[Usage](#usage)
+    -[Credits](#credits)
+    -[License](#license)
+    -[Questions](#questions)`
 
     if (tableOfContents === true) {
         return tableText
@@ -173,7 +173,7 @@ function createInstallationSteps() {
 
 ${installation}`
 
-    if (want_installation == true) {
+    if (want_installation === true) {
         return installationText
 
     }
@@ -196,7 +196,7 @@ ${credit}`
 function generateTests(){
     if(want_tests===true){
         return `## Tests
-        
+
 ${tests}`
     }
     else{
