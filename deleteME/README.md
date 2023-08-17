@@ -49,12 +49,12 @@ WHEN I choose a license for my application from a list of options
 THEN a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under
 
 
------------ ----------
+-----------DONE----------
 WHEN I enter my GitHub username
 THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
 
 
------------ ----------
+-----------DONE----------
 WHEN I enter my email address
 THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
 
