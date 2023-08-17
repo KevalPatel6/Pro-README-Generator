@@ -4,13 +4,13 @@
 
 This project was created to automate the process of creating a professional READMEfile directly from the commnad line. The motivation behind this projecct was to quickly generate a README by answering prompt questions. From creating this application I was able to work on creating and executing javascript programs outside of the browser using Nodejs.
         
-##Table of Contents
+## Table of Contents
 
-    [Installation](#installation)
-    [Usage](#usage)
-    [Credits](#credits)
-    [License](#license)
-    [Questions](#questions)
+[Installation](#installation)
+[Usage](#usage)
+[Credits](#credits)
+[License](#license)
+[Questions](#questions)
 
 ## Installation
 
