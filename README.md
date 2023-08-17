@@ -7,10 +7,15 @@ This project was created to automate the process of creating a professional READ
 ## Table of Contents
 
 [Installation](#installation)
+
 [Usage](#usage)
+
 [Credits](#credits)
+
 [License](#license)
+
 [Questions](#questions)
+
 
 ## Installation
 
