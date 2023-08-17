@@ -195,7 +195,9 @@ ${credit}`
 
 function generateTests(){
     if(want_tests===true){
-        return tests
+        return `## Tests
+        
+${tests}`
     }
     else{
         return
