@@ -1,5 +1,6 @@
 import inquirer from 'inquirer';
-import fs from 'fs/promises'
+import fs from 'fs/promises';
+import dayjs from 'dayjs';
 
 let badgeLinks = [
 
@@ -21,7 +22,7 @@ let badgeLinks = [
     },
 ]
 
-let { title, description, tableOfContents, want_installation, installation, want_credit, credit, usage, license, want_tests, tests, questions, username, email} = await inquirer
+let { title, description, tableOfContents, want_installation, installation, want_credit, credit, usage, license, want_tests, tests, username, email, license_owner} = await inquirer
     .prompt([
         {
             type: 'input',
@@ -70,6 +71,12 @@ let { title, description, tableOfContents, want_installation, installation, want
             }
         },
         {
+            type:'input',
+            name:'license_owner',
+            message: "Enter the name of the license owner",
+            when: (answer) => answer.license==='MIT' || answer.license==='Apache'
+        },
+        {
             type: 'confirm',
             name: 'tableOfContents',
             message: "Do you want a table of contents?"
@@ -101,29 +108,21 @@ let { title, description, tableOfContents, want_installation, installation, want
 
 let readmeText =
 
-    `# ${titleSplitter(title)}   ${returnBadge()}
+    `#${titleSplitter(title)}   ${returnBadge()}
 
-## Description
+##Description
 
-${description}
+${description}${generateTableOfContents()}${createInstallationSteps()}
 
-${generateTableOfContents()}
-
-${createInstallationSteps()}
-
-## Usage
+##Usage
 
 ${usage}
-
 ${creditsGenerator()}
-
-## License
+##License
 
 ${generateLicense(license)}
-
 ${generateTests()}
-
-## Questions
+##Questions
 
 If you would like to reach out to me with any questions, you can email me directly at: [${email}](mailto:${email})
 
@@ -149,27 +148,30 @@ function titleSplitter(title) {
 
 function generateTableOfContents() {
 
-    let tableText =
-        `## Table of Contents
+    let tableText =`
+##Table of Contents
 
-    -[Installation](#installation)
-    -[Usage](#usage)
-    -[Credits](#credits)
-    -[License](#license)
-    -[Questions](#questions)`
+    [Installation](#installation)
+    [Usage](#usage)
+    [Credits](#credits)
+    [License](#license)
+    [Questions](#questions)`
 
     if (tableOfContents === true) {
-        return tableText
+        return `
+        ${tableText}`
     }
     else {
-        return
+        return ''
     }
 
 }
 
 function createInstallationSteps() {
     let installationText =
-        `## Installation
+`
+
+##Installation
 
 ${installation}`
 
@@ -178,35 +180,39 @@ ${installation}`
 
     }
     else {
-        return
+        return ''
     }
 }
 
 function creditsGenerator() {
     if (want_credit === true) {
-        return `## Credits 
+        return `
+##Credits 
 
-${credit}`
+${credit}
+`
     }
     else {
-        return
+        return ''
     }
 }
 
 function generateTests(){
     if(want_tests===true){
-        return `## Tests
+        return `
+##Tests
 
-${tests}`
+${tests}
+`
     }
     else{
-        return
+        return ''
     }
 }
 
 function generateLicense(license) {
     if (license == "Apache") {
-        return `Copyright [yyyy] [name of copyright owner]
+        return `Copyright [${dayjs().year()}] [${license_owner}]
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -223,7 +229,7 @@ limitations under the License.`
     else if (license == 'MIT') {
         return `MIT License
 
-Copyright (c) [year] [fullname]
+Copyright (c) [${dayjs().year()}] [${license_owner}]
         
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

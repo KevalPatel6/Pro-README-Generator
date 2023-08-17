@@ -1,32 +1,30 @@
-# Keval's-Project   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+#Pro-README-Generator   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Description
+##Description
 
-This project was created to automate creating a readme file based on answering questions directly from the command line.
+This project was created to automate the process of creating a professional READMEfile directly from the commnad line. The motivation behind this projecct was to quickly generate a README by answering prompt questions. From creating this application I was able to work on creating and executing javascript programs outside of the browser using Nodejs.
+        
+##Table of Contents
 
-## Table of Contents
+    [Installation](#installation)
+    [Usage](#usage)
+    [Credits](#credits)
+    [License](#license)
+    [Questions](#questions)
 
-    -[Installation](#installation)
-    -[Usage](#usage)
-    -[Credits](#credits)
-    -[License](#license)
-    -[Questions](#questions)
+##Installation
 
-undefined
+To install this package. Simply download the index.mjs file from the repository and execute the script from the commnad line using the syntax node index.mjs
 
-## Usage
+##Usage
 
-This project can be used to create a professional readme file just by answer a few questions from the commnand line instead of typing it all out and creating a new file from vs code
+The usage of this product is....
 
-## Credits 
-
-I collaborated with google
-
-## License
+##License
 
 MIT License
 
-Copyright (c) [year] [fullname]
+Copyright (c) [2023] [Keval Patel]
         
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -46,9 +44,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-undefined
-
-## Questions
+##Questions
 
 If you would like to reach out to me with any questions, you can email me directly at: [khp90611@gmail.com](mailto:khp90611@gmail.com)
 
