@@ -147,15 +147,45 @@ function titleSplitter(title) {
 
 
 function generateTableOfContents() {
+    let tocInstallation = ''
+    let tocCredits=''
+    let tocTests = ''
+
+    if(want_installation===true){
+        tocInstallation= `
+[Installation](#installation)
+        `
+    }
+    else{
+        tocInstallation= ''
+    }
+
+    if(want_tests===true){
+        tocTests=`
+[Tests](#tests)
+        `
+    }
+    else{
+        tocTests=''
+    }
+
+    if(want_credit===true){
+        tocCredits=`
+[Credits](#credits)
+        `
+    }
+    else{
+        tocCredits= ''
+    }
 
     let tableText =`
 ## Table of Contents
-
-    [Installation](#installation)
-    [Usage](#usage)
-    [Credits](#credits)
-    [License](#license)
-    [Questions](#questions)`
+${tocInstallation}
+[Usage](#usage)
+${tocCredits}
+[License](#license)
+${tocTests}
+[Questions](#questions)`
 
     if (tableOfContents === true) {
         return `

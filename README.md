@@ -1,35 +1,40 @@
-# Pro-README-Generator   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# Awfe   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
 
-This project was created to automate the process of creating a professional READMEfile directly from the commnad line. The motivation behind this projecct was to quickly generate a README by answering prompt questions. From creating this application I was able to work on creating and executing javascript programs outside of the browser using Nodejs.
+weaf
         
 ## Table of Contents
 
 [Installation](#installation)
-
+        
 [Usage](#usage)
 
 [Credits](#credits)
-
+        
 [License](#license)
 
+[Tests](#tests)
+        
 [Questions](#questions)
-
 
 ## Installation
 
-To install this package. Simply download the index.mjs file from the repository and execute the script from the commnad line using the syntax node index.mjs
+awf
 
 ##Usage
 
-The usage of this product is....
+awf
 
-##License
+## Credits 
+
+afw
+
+## License
 
 MIT License
 
-Copyright (c) [2023] [Keval Patel]
+Copyright (c) [2023] [awfe]
         
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -49,8 +54,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-##Questions
+## Tests
 
-If you would like to reach out to me with any questions, you can email me directly at: [khp90611@gmail.com](mailto:khp90611@gmail.com)
+awef
 
-Also, you can visit my github profile page [here](https://github.com/KevalPatel6).
+## Questions
+
+If you would like to reach out to me with any questions, you can email me directly at: [awfe](mailto:awfe)
+
+Also, you can visit my github profile page [here](https://github.com/fwe).
