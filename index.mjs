@@ -21,34 +21,45 @@ let badgeLinks = [
     },
 ]
 
-let { title, description, tableOfContents, installation, credit, usage, license } = await inquirer
+let { title, description, tableOfContents, want_installation, installation, want_credit, credit, usage, license} = await inquirer
     .prompt([
         {
             type: 'input',
             name: 'title',
             message: 'What is the title of your project?',
-
         },
-        // {
-        //     type: 'input',
-        //     name: 'description',
-        //     message: "Write a description of your project",
-        // },
-        // {
-        //     type: 'confirm',
-        //     name: 'installation',
-        //     message: "Do you want to include installation steps?"
-        // },
-        // {
-        //     type: 'input',
-        //     name: 'usage',
-        //     message: "Type in the usage of this project"
-        // },
-        // {
-        //     type: 'input',
-        //     name: 'credit',
-        //     message: 'List your collaborators with their Github profiles, list any third-party assets that require attribution, and include tutorial links.',
-        // },
+        {
+            type: 'input',
+            name: 'description',
+            message: "Write a description of your project",
+        },
+        {
+            type: 'confirm',
+            name: 'want_installation',
+            message: "Do you want to include installation steps?",
+        },
+        {
+            type: 'input',
+            name: 'installation',
+            message: "Type in your installation instructions",
+            when: (answer) => answer.want_installation===true
+        },
+        {
+            type: 'input',
+            name: 'usage',
+            message: "Type in the usage of this project"
+        },
+        {
+            type: 'confirm',
+            name:'want_credit',
+            message: 'Do you have any collaborators or anyone including third-party assets and tutorial links that you want to give credit to?'
+        },
+        {
+            type: 'input',
+            name: 'credit',
+            message: 'List your collaborators with their Github profiles, list any third-party assets that require attribution, and include tutorial links.',
+            when: (answer) => answer.want_credit===true
+        },
         {
             type: 'list',
             name: 'license',
@@ -59,11 +70,11 @@ let { title, description, tableOfContents, installation, credit, usage, license 
                 return val;
             }
         },
-        // {
-        //     type: 'confirm',
-        //     name: 'tableOfContents',
-        //     message: "Do you want a table of contents?"
-        // },
+        {
+            type: 'confirm',
+            name: 'tableOfContents',
+            message: "Do you want a table of contents?"
+        },
 
 
     ])
@@ -131,20 +142,22 @@ function createInstallationSteps() {
     let installationText =
         `## Installation
 
-    ${installation}`
+${installation}`
 
-    if (installation == true) {
+    if (want_installation == true) {
         return installationText
 
     }
-    else if (installation === false) {
+    else {
         return
     }
 }
 
 function creditsGenerator() {
-    if (credit === true) {
-        return credit
+    if (want_credit === true) {
+        return `## Credits 
+
+${credit}`
     }
     else {
         return
@@ -169,7 +182,7 @@ See the License for the specific language governing permissions and
 limitations under the License.`
     }
     else if (license == 'MIT') {
-        return`MIT License
+        return `MIT License
 
 Copyright (c) [year] [fullname]
         
