@@ -114,7 +114,7 @@ let readmeText =
 
 ${description}${generateTableOfContents()}${createInstallationSteps()}
 
-##Usage
+## Usage
 
 ${usage}
 ${creditsGenerator()}
