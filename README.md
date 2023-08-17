@@ -1,6 +1,6 @@
-#Pro-README-Generator   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# Pro-README-Generator   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-##Description
+## Description
 
 This project was created to automate the process of creating a professional READMEfile directly from the commnad line. The motivation behind this projecct was to quickly generate a README by answering prompt questions. From creating this application I was able to work on creating and executing javascript programs outside of the browser using Nodejs.
         
@@ -12,7 +12,7 @@ This project was created to automate the process of creating a professional READ
     [License](#license)
     [Questions](#questions)
 
-##Installation
+## Installation
 
 To install this package. Simply download the index.mjs file from the repository and execute the script from the commnad line using the syntax node index.mjs
 
